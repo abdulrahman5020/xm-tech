@@ -1,6 +1,8 @@
-<p>favorites works!</p>
+<app-pic-display *ngIf="!paramsId;else singleImg" [images]="storedImages" [scrollEnabled]="false"></app-pic-display>
 
-
-<ng-container *ngFor="let img of storedImages">
-<img width="250" height="200" [src]="img.download_url" alt="">
-</ng-container>
+<ng-template #singleImg>
+    <div class="singleImage">
+        <img width="900" height="700px" [src]="singleImage.download_url">
+        <button mat-raised-button color="warn" (click)="removeFromFavorite()">Remove</button>
+    </div>
+</ng-template>

@@ -1,5 +1,9 @@
-<div class="picContainer" #scrollMe (scroll)="onScroll()">
+<div class="picContainer" #scrollMe (scroll)="scrollEnabled && onScroll()">
     <ng-container *ngFor="let img of images;">
-        <img width="250px" height="200px;" [src]="img.download_url | changeImageSize" alt="" (click)="storeImage(img)">
+        <img width="250px" height="200px;" [src]="img.download_url | changeImageSize" alt=""
+            (click)="imageClicked(img)">
     </ng-container>
+    <div>
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
+    </div>
 </div>

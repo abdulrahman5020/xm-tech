@@ -1,4 +1,5 @@
 .picContainer {
+    margin-top: 2%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     width: 50%;
@@ -6,4 +7,15 @@
     gap: 3%;
     height: 700px;
     overflow: auto;
+    justify-items: center;
+
+    div {
+        grid-column: span 3;
+        margin-inline: auto;
+    }
+
+    img {
+        border-radius: 5px;
+        cursor: pointer;
+    }
 }
