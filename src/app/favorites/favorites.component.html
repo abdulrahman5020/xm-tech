@@ -1,1 +1,6 @@
 <p>favorites works!</p>
+
+
+<ng-container *ngFor="let img of storedImages">
+<img width="250" height="200" [src]="img.download_url" alt="">
+</ng-container>

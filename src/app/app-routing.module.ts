@@ -5,7 +5,7 @@ import { PhotosComponent } from './photos/photos.component';
 
 const routes: Routes = [
   { path: '', component: PhotosComponent },
-  { path: 'favorites', component: FavoritesComponent },
+  { path: 'favorites', loadChildren: () => import('./favorites/favorites.module').then(m => m.FavoritesModule) },
 ];
 
 @NgModule({

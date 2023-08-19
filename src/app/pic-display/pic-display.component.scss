@@ -1,0 +1,9 @@
+.picContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 50%;
+    margin-inline: auto;
+    gap: 3%;
+    height: 700px;
+    overflow: auto;
+}
