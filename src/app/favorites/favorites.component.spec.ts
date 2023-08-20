@@ -37,7 +37,7 @@ describe('FavoritesComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should remove item from favorites (localStorage)', () => {
+  it('should remove the current selected image from favorites (localStorage)', () => {
     //create a fake local storage service that will override the default localstorage methods
     let store: any = {};
     const mockLocalStorage = {
@@ -47,29 +47,23 @@ describe('FavoritesComponent', () => {
       setItem: (key: string, value: string) => {
         store[key] = `${value}`;
       },
-      removeItem: (key: string) => {
-        delete store[key];
-      },
-      clear: () => {
-        store = {};
-      }
     };
     spyOn(localStorage, 'getItem')
       .and.callFake(mockLocalStorage.getItem);
     spyOn(localStorage, 'setItem')
       .and.callFake(mockLocalStorage.setItem);
 
-    component.storedImages = picsumMockData;
+    component.favoriteImages = picsumMockData;
     component.singleImage = { id: "12", download_url: "" }
 
     component.removeFromFavorite();
-    expect(component.storedImages.length).toBe(11);
-    const index = component.storedImages.findIndex(item => item.id == component.singleImage.id);
+    expect(component.favoriteImages.length).toBe(11);
+    const index = component.favoriteImages.findIndex(item => item.id == component.singleImage.id);
     expect(index).toBe(-1);
-    let storedImagesLocal = localStorage.getItem("storedImages");
-    if (storedImagesLocal) {// if favorite images exists then check their length
-      storedImagesLocal = JSON.parse(storedImagesLocal);
-      expect(storedImagesLocal?.length).toBe(11);
+    let favoriteImagesLocal = localStorage.getItem("storedImages");
+    if (favoriteImagesLocal) {// if favorite images exists then check their length
+      favoriteImagesLocal = JSON.parse(favoriteImagesLocal);
+      expect(favoriteImagesLocal?.length).toBe(11);
     }
   });
 

@@ -33,8 +33,7 @@ export class ImageApiService {
         this.isLoading.next(false);
       }
     }, (err) => {
-      console.log(err);
-      this.openSnackBar("Something went wrong", "Close");
+      this.openSnackBar(`Something went wrong Error: ${err}.`, "Close");
     })
   }
 

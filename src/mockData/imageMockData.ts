@@ -1,3 +1,4 @@
+//mock data used for unit testing
 export const picsumMockData = [
     {
         "id": "12",
