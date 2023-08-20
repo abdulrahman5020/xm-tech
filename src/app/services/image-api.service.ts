@@ -21,7 +21,7 @@ export class ImageApiService {
 
   constructor(private _http: HttpClient, private _snackBar: MatSnackBar) { }
 
-  getImages(pageNumber: number, images?: Picsum[]) {// get images from the picsum api and update the subject
+  getImages(pageNumber: number, images?: Picsum[]): any {// get images from the picsum api and update the subject
     this.isLoading.next(true);
     this._http.get<Picsum[]>(`https://picsum.photos/v2/list?limit=12&page=${pageNumber}`).pipe(
       (delay(Math.floor(Math.random() * 1000))) // add a random delay to the api result
@@ -47,7 +47,6 @@ export class ImageApiService {
         localStorage.setItem("storedImages", JSON.stringify(imagesArray))
         this.openSnackBar("Image added to favorites successfully.", "Close");
       } else {//show snack bar to tell the user it already exists
-        console.log('already exists') // show message
         this.openSnackBar("Image already exists in favorites.", "Close");
       }
     } else {

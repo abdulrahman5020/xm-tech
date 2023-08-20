@@ -1,4 +1,10 @@
-<app-pic-display *ngIf="!paramsId;else singleImg" [images]="storedImages" [scrollEnabled]="false"></app-pic-display>
+<ng-container *ngIf="storedImages.length;else noImages">
+    <app-pic-display *ngIf="!paramsId;else singleImg" [images]="storedImages" [scrollEnabled]="false"></app-pic-display>
+</ng-container>
+
+<ng-template #noImages>
+    <h1 style="padding:10px;">No images in Favorites</h1>
+</ng-template>
 
 <ng-template #singleImg>
     <div class="singleImage">
